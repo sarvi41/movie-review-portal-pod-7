@@ -1,0 +1,20 @@
+.review-form-page {
+  padding: 24px;
+  display: flex;
+  justify-content: center;
+}
+
+mat-card {
+  width: min(720px, 100%);
+}
+
+.review-form {
+  display: grid;
+  gap: 16px;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}

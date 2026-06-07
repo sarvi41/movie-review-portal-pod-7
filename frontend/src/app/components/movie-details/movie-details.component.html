@@ -1,0 +1,61 @@
+<div class="movie-details" *ngIf="movie; else loadingState">
+  <mat-card class="movie-card">
+    <mat-card-header>
+      <mat-card-title>{{ movie.title }}</mat-card-title>
+      <mat-card-subtitle
+        >{{ movie.releaseYear }} • {{ movie.director }}</mat-card-subtitle
+      >
+    </mat-card-header>
+
+    <mat-card-content>
+      <p>{{ movie.description }}</p>
+      <div class="details-meta">
+        <mat-chip-list>
+          <mat-chip color="primary" selected
+            >{{ movie.averageRating | number: "1.1-2" }} ★</mat-chip
+          >
+          <mat-chip *ngFor="let genre of movie.genres">{{ genre }}</mat-chip>
+        </mat-chip-list>
+        <p class="duration">Runtime: {{ movie.runtimeMinutes }} minutes</p>
+      </div>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <a
+        mat-stroked-button
+        color="primary"
+        [routerLink]="['/movies', movie.id, 'review']"
+        >Write review</a
+      >
+    </mat-card-actions>
+  </mat-card>
+
+  <div class="reviews-section">
+    <h3>Reviews</h3>
+
+    <div *ngIf="reviewLoading" class="loading-container">
+      <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+    </div>
+
+    <div *ngIf="!reviewLoading && reviews.length === 0" class="empty-state">
+      <p>No reviews yet. Be the first to share your opinion.</p>
+    </div>
+
+    <mat-list *ngIf="reviews.length > 0">
+      <mat-list-item *ngFor="let review of reviews">
+        <div class="review-header">
+          <h4>{{ review.userName }}</h4>
+          <span class="rating">{{ review.rating ?? "—" }} ★</span>
+        </div>
+        <p>{{ review.reviewText }}</p>
+        <p class="review-date">{{ review.createdAt | date: "medium" }}</p>
+      </mat-list-item>
+    </mat-list>
+  </div>
+</div>
+
+<ng-template #loadingState>
+  <div class="loading-container">
+    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+  </div>
+</ng-template>

@@ -1,0 +1,42 @@
+<div class="review-form-page">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Write a Review</mat-card-title>
+      <mat-card-subtitle
+        >Share your thoughts and rating for this movie.</mat-card-subtitle
+      >
+    </mat-card-header>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="review-form">
+      <mat-form-field appearance="outline">
+        <mat-label>Review</mat-label>
+        <textarea matInput formControlName="reviewText" rows="6"></textarea>
+        <mat-error *ngIf="reviewText?.hasError('required')"
+          >Review text is required.</mat-error
+        >
+        <mat-error *ngIf="reviewText?.hasError('minlength')"
+          >Minimum 10 characters required.</mat-error
+        >
+        <mat-error *ngIf="reviewText?.hasError('maxlength')"
+          >Maximum 2000 characters allowed.</mat-error
+        >
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Rating</mat-label>
+        <mat-select formControlName="rating">
+          <mat-option *ngFor="let value of [1, 2, 3, 4, 5]" [value]="value">{{
+            value
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div class="actions">
+        <button mat-flat-button color="primary" type="submit">
+          Submit Review
+        </button>
+        <button mat-button type="button" routerLink="../">Cancel</button>
+      </div>
+    </form>
+  </mat-card>
+</div>

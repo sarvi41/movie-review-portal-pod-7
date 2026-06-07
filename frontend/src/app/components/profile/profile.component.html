@@ -1,0 +1,35 @@
+<div class="profile-page">
+  <mat-card *ngIf="user$ | async as user; else loading">
+    <mat-card-header>
+      <mat-card-title>{{ user.name }}</mat-card-title>
+      <mat-card-subtitle>{{ user.email }}</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-divider></mat-divider>
+
+    <mat-list>
+      <mat-list-item>
+        <mat-icon matListIcon>badge</mat-icon>
+        <h4 matLine>Roles</h4>
+        <p matLine>{{ user.roles.join(", ") }}</p>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-icon matListIcon>calendar_today</mat-icon>
+        <h4 matLine>Joined</h4>
+        <p matLine>
+          {{
+            user.createdAt ? (user.createdAt | date: "mediumDate") : "Unknown"
+          }}
+        </p>
+      </mat-list-item>
+    </mat-list>
+
+    <div class="actions">
+      <button mat-flat-button color="primary" (click)="logout()">Logout</button>
+    </div>
+  </mat-card>
+
+  <ng-template #loading>
+    <div class="loading-state">Loading profile...</div>
+  </ng-template>
+</div>

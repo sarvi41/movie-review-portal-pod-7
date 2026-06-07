@@ -1,0 +1,21 @@
+.profile-page {
+  padding: 24px;
+  display: flex;
+  justify-content: center;
+}
+
+mat-card {
+  width: min(640px, 100%);
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+
+.loading-state {
+  padding: 32px;
+  text-align: center;
+  width: 100%;
+}
