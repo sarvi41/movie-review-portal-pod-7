@@ -1,0 +1,25 @@
+# Java
+**/target/
+*.log
+*.class
+
+# Maven
+.mvn/
+!/.mvn/wrapper/maven-wrapper.jar
+**/mvnw
+**/mvnw.cmd
+
+# Node
+node_modules/
+dist/
+
+# IDE
+.vscode/
+.idea/
+*.iml
+
+# Docker
+**/.dockerignore
+
+# Misc
+.DS_Store

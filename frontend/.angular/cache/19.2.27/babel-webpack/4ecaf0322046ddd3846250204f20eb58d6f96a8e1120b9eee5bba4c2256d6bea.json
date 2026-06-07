@@ -1,0 +1,1 @@
+{"ast":null,"code":"import { AppComponent } from \"./app.component\";\nexport const appRoutes = [{\n  path: \"\",\n  component: AppComponent\n}];","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}
